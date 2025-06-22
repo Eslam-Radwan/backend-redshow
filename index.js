@@ -16,6 +16,9 @@ app.use(express.json()) // to parse JSON bodies
 app.use('/api/auth', authRoutes)
 app.use('/api/movies', movieRoutes)
 app.use('/api/shows', showRoutes)
+app.use('/', (req,res) => {
+  res.end('Welcom to the backend of movie and shows platform')
+})
 
 // Optional: 404 handler for undefined routes
 app.use((req, res, next) => {
