@@ -4,6 +4,6 @@ const { signup, login } = require('../controllers/authController.js')
 const app = express()
 
 app.post('/signup', signup)
-app.get('/login', login)
+app.post('/login', login)
 
 module.exports = app
