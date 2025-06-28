@@ -23,7 +23,7 @@ const getTopRatedMoviesController = async (req, res, next) => {
 const getMovieDetailController = async (req, res, next) => {
     try {
         const count = parseInt(req.query.count, 10) || 20
-        const movie = await getMovieDetail(count,req.params.id)
+        const movie = await getMovieDetail(req.params.id)
         res.status(200).json(movie)
     } catch (error) {
         next(error)

@@ -19,33 +19,39 @@ const fecthNumberOfPages = async (domain, page) => {
     }
 }
 
-const getPopularMovies = async (count) => {
-    const arr = []
+const getPopularMovies = async (count = 20) => {
+    const retObj = {}
+    retObj.count = count;
+    retObj.results = []
 
-    for (let i = 1; i <= Math.ceil(count / 20.0);i++)
-    {
-        arr.push(fecthNumberOfPages('popular', i))
+    for (let i = 1; i <= Math.ceil(count / 20.0); i++) {
+
+        retObj.results.push((await fecthNumberOfPages('popular', i)).results)
     }
-    return arr;
+    return retObj;
 }
-const getTopRatedMovies = async (count) => {
-    const arr = []
+const getTopRatedMovies = async (count = 20) => {
+    const retObj = {}
+    retObj.count = count;
+    retObj.results = []
 
-    for (let i = 1; i <= Math.ceil(count / 20.0);i++)
-    {
-        arr.push(fecthNumberOfPages('top_rated', i))
+    for (let i = 1; i <= Math.ceil(count / 20.0); i++) {
+
+        retObj.results.push((await fecthNumberOfPages('top_rated', i)).results)
     }
-    return arr;
+    return retObj;
 }
 
-const getMovieDetail = async (count, id) => {
-     const arr = []
-
-    for (let i = 1; i <= Math.ceil(count / 20.0);i++)
-    {
-        arr.push(fecthNumberOfPages(id, i))
+const getMovieDetail = async (id) => {
+     try {
+        
+        const response = await axios.get(`${API_BASE_URL}/movie/${id}`, {
+            headers: { 'Authorization': `Bearer ${API_KEY}` }
+        })
+        return response.data;
+    } catch (error) {
+        throw new Error(error.response?.data?.status_message || error.message)
     }
-    return arr;
 }
 
 module.exports = { getPopularMovies, getTopRatedMovies, getMovieDetail }
