@@ -2,7 +2,8 @@ const { getPopularMovies, getTopRatedMovies, getMovieDetail } = require('../serv
 
 const getPopularMoviesController = async (req, res, next) => {
     try {
-        const movies = await getPopularMovies()
+        const count = parseInt(req.query.count, 10) || 20
+        const movies = await getPopularMovies(count)
         res.status(200).json(movies)
     } catch (error) {
         next(error)
@@ -11,7 +12,8 @@ const getPopularMoviesController = async (req, res, next) => {
 
 const getTopRatedMoviesController = async (req, res, next) => {
     try {
-        const movies = await getTopRatedMovies()
+        const count = parseInt(req.query.count, 10) || 20
+        const movies = await getTopRatedMovies(count)
         res.status(200).json(movies)
     } catch (error) {
         next(error)
@@ -20,7 +22,8 @@ const getTopRatedMoviesController = async (req, res, next) => {
 
 const getMovieDetailController = async (req, res, next) => {
     try {
-        const movie = await getMovieDetail(req.params.id)
+        const count = parseInt(req.query.count, 10) || 20
+        const movie = await getMovieDetail(count,req.params.id)
         res.status(200).json(movie)
     } catch (error) {
         next(error)

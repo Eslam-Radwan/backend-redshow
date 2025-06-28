@@ -28,7 +28,7 @@ const getPopularMovies = async (count) => {
     }
     return arr;
 }
-const getTopRatedMovies = async () => {
+const getTopRatedMovies = async (count) => {
     const arr = []
 
     for (let i = 0; i < Math.ceil(count / 20.0);i++)
@@ -38,7 +38,7 @@ const getTopRatedMovies = async () => {
     return arr;
 }
 
-const getMovieDetail = async (id) => {
+const getMovieDetail = async (count, id) => {
      const arr = []
 
     for (let i = 0; i < Math.ceil(count / 20.0);i++)
