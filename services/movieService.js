@@ -28,11 +28,11 @@ const getPopularMovies = async (count = 20) => {
 
         retObj.results = retObj.results.concat((await fecthNumberOfPages('popular', i)).results)
     }
-    retObj.results.slice(0,count)
+    retObj.results = retObj.results.slice(0,count)
     return retObj;
 }
 const getTopRatedMovies = async (count = 20) => {
-    const retObj = {}
+    const retObj = {}   
     retObj.count = count;
     retObj.results = []
 
@@ -40,7 +40,7 @@ const getTopRatedMovies = async (count = 20) => {
 
         retObj.results = retObj.results.concat((await fecthNumberOfPages('top_rated', i)).results)
     }
-    retObj.results.slice(0,count)
+    retObj.results = retObj.results.slice(0,count)
     return retObj;
 }
 
