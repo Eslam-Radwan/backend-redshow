@@ -22,7 +22,7 @@ const fecthNumberOfPages = async (domain, page) => {
 const getPopularMovies = async (count) => {
     const arr = []
 
-    for (let i = 0; i < Math.ceil(count / 20.0);i++)
+    for (let i = 1; i <= Math.ceil(count / 20.0);i++)
     {
         arr.push(fecthNumberOfPages('popular', i))
     }
@@ -31,7 +31,7 @@ const getPopularMovies = async (count) => {
 const getTopRatedMovies = async (count) => {
     const arr = []
 
-    for (let i = 0; i < Math.ceil(count / 20.0);i++)
+    for (let i = 1; i <= Math.ceil(count / 20.0);i++)
     {
         arr.push(fecthNumberOfPages('top_rated', i))
     }
@@ -41,7 +41,7 @@ const getTopRatedMovies = async (count) => {
 const getMovieDetail = async (count, id) => {
      const arr = []
 
-    for (let i = 0; i < Math.ceil(count / 20.0);i++)
+    for (let i = 1; i <= Math.ceil(count / 20.0);i++)
     {
         arr.push(fecthNumberOfPages(id, i))
     }
