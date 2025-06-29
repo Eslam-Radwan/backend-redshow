@@ -2,7 +2,8 @@ const { getPopularShows, getTopRatedShows, getShowDetail } = require('../service
 
 const getPopularShowsController = async (req, res, next) => {
     try {
-        const shows = await getPopularShows()
+        const count = parseInt(req.query.count, 10) || 20
+        const shows = await getPopularShows(count)
         res.status(200).json(shows)
     } catch (error) {
         next(error)
@@ -11,7 +12,8 @@ const getPopularShowsController = async (req, res, next) => {
 
 const getTopRatedShowsController = async (req, res, next) => {
     try {
-        const shows = await getTopRatedShows()
+        const count = parseInt(req.query.count, 10) || 20
+        const shows = await getTopRatedShows(count)
         res.status(200).json(shows)
     } catch (error) {
         next(error)
