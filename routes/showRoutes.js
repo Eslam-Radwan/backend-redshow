@@ -6,7 +6,7 @@ const router = express.Router()
 // GET /api/shows/popular
 router.get('/popular', getPopularShows)
 // GET /api/shows/toprated
-router.get('/toprated', getTopRatedShows)
+router.get('/top_rated', getTopRatedShows)
 // GET /api/shows/:id
 router.get('/:id', getShowsDetial)
 

@@ -11,7 +11,7 @@ const fecthNumberOfPages = async (domain, page) => {
 
      try {
         
-        const response = await axios.get(`${API_BASE_URL}/movie/${domain}?page=${page}`, {
+        const response = await axios.get(`${API_BASE_URL}/tv/${domain}?page=${page}`, {
             headers: { 'Authorization': `Bearer ${API_KEY}` }
         })
         return response.data;
