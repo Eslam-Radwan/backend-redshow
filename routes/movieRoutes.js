@@ -1,5 +1,5 @@
 const express = require('express')
-const { getPopularMoviesController, getTopRatedMoviesController, getMovieDetailController, getMoviesController } = require('../controllers/movieController.js')
+const { getPopularMoviesController, getTopRatedMoviesController, getMovieDetailController, getMoviesController, getMoviesGenresController } = require('../controllers/movieController.js')
 
 const router = express.Router()
 
@@ -11,5 +11,7 @@ router.get('/top_rated', getTopRatedMoviesController)
 router.get('/:id', getMovieDetailController)
 
 router.get('/discover', getMoviesController)
+
+router.get('/genres', getMoviesGenresController)
 
 module.exports = router
