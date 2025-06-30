@@ -3,15 +3,10 @@ const { getPopularMoviesController, getTopRatedMoviesController, getMovieDetailC
 
 const router = express.Router()
 
-// GET /api/movies/popular
 router.get('/popular', getPopularMoviesController)
-// GET /api/movies/toprated
 router.get('/top_rated', getTopRatedMoviesController)
-// GET /api/movies/:id
-router.get('/:id', getMovieDetailController)
-
 router.get('/discover', getMoviesController)
-
 router.get('/genres', getMoviesGenresController)
+router.get('/:id', getMovieDetailController)
 
 module.exports = router

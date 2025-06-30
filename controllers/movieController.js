@@ -29,18 +29,18 @@ const getMovieDetailController = async (req, res, next) => {
     }
 }
 
-const getMoviesController = () => {
+const getMoviesController = async (req, res, next) => {
     try {
-        const data = getMovies(req.query)
+        const data = await getMovies(req.query)
         res.status(200).json(data)
     }
     catch (error) {
         next(error)
     }
 }
-const getMoviesGenresController = () => {
+const getMoviesGenresController = async (req, res, next) => {
     try {
-        const data = getMoviesGenres();
+        const data = await getMoviesGenres();
         res.status(200).json(data);
     }
     catch (error)

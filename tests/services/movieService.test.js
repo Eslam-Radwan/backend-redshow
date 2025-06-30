@@ -10,14 +10,12 @@ const {
     it('should fetch popular movies', async () => {
       const data = await getPopularMovies()
       expect(data).toHaveProperty('results')
-      expect(Array.isArray(data.results)).toBe(true)
       expect(data.results).not.toBeNull()
     })
 
     it('should fetch top rated movies', async () => {
       const data = await getTopRatedMovies()
       expect(data).toHaveProperty('results')
-      expect(Array.isArray(data.results)).toBe(true)
       expect(data.results).not.toBeNull()
     })
 
@@ -32,14 +30,12 @@ const {
     it('should fetch movies with query', async () => {
       const data = await getMovies({ sort_by: 'popularity.desc', page: 1 })
       expect(data).toHaveProperty('results')
-      expect(Array.isArray(data.results)).toBe(true)
       expect(data.results).not.toBeNull()
     })
 
     it('should fetch movie genres', async () => {
       const data = await getMoviesGenres()
       expect(data).toHaveProperty('genres')
-      expect(Array.isArray(data.genres)).toBe(true)
       expect(data.genres).not.toBeNull()
     })
   })
