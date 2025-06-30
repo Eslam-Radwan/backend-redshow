@@ -1,13 +1,15 @@
 const express = require('express')
-const { getPopularMovies, getTopRatedMovies, getMovieDetail } = require('../controllers/movieController.js')
+const { getPopularMoviesController, getTopRatedMoviesController, getMovieDetailController, getMoviesController } = require('../controllers/movieController.js')
 
 const router = express.Router()
 
 // GET /api/movies/popular
-router.get('/popular', getPopularMovies)
+router.get('/popular', getPopularMoviesController)
 // GET /api/movies/toprated
-router.get('/top_rated', getTopRatedMovies)
+router.get('/top_rated', getTopRatedMoviesController)
 // GET /api/movies/:id
-router.get('/:id', getMovieDetail)
+router.get('/:id', getMovieDetailController)
+
+router.get('/discover', getMoviesController)
 
 module.exports = router

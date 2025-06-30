@@ -1,4 +1,4 @@
-const { getPopularMovies, getTopRatedMovies, getMovieDetail } = require('../services/movieService.js')
+const { getPopularMovies, getTopRatedMovies, getMovieDetail, getMoviesGenres} = require('../services/movieService.js')
 
 const getPopularMoviesController = async (req, res, next) => {
     try {
@@ -22,7 +22,6 @@ const getTopRatedMoviesController = async (req, res, next) => {
 
 const getMovieDetailController = async (req, res, next) => {
     try {
-        const count = parseInt(req.query.count, 10) || 20
         const movie = await getMovieDetail(req.params.id)
         res.status(200).json(movie)
     } catch (error) {
@@ -30,8 +29,30 @@ const getMovieDetailController = async (req, res, next) => {
     }
 }
 
+const getMoviesController = () => {
+    try {
+        const data = getMovies(req.query)
+        res.status(200).json(data)
+    }
+    catch (error) {
+        next(error)
+    }
+}
+const getMoviesGenresController = () => {
+    try {
+        const data = getMoviesGenres();
+        res.status(200).json(data);
+    }
+    catch (error)
+    {
+        next(error)
+    }
+}
+
 module.exports = {
-    getPopularMovies: getPopularMoviesController,
-    getTopRatedMovies: getTopRatedMoviesController,
-    getMovieDetail: getMovieDetailController
+    getPopularMoviesController,
+    getTopRatedMoviesController,
+    getMovieDetailController,
+    getMoviesController,
+    getMoviesGenresController
 }

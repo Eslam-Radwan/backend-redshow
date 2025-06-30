@@ -59,4 +59,12 @@ const getShowDetail = async (id) => {
     }
 }
 
-module.exports = { getPopularShows, getTopRatedShows, getShowDetail }
+
+const getShows = async (query) => {
+    const respone = await axios.get(`${API_BASE_URL}/discover/tv`,{params:query, headers:{'Authorization': `Bearer ${API_KEY}`}})
+    return respone.data;
+}
+
+
+
+module.exports = { getPopularShows, getTopRatedShows, getShowDetail,getShows }

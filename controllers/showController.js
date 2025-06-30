@@ -1,4 +1,4 @@
-const { getPopularShows, getTopRatedShows, getShowDetail } = require('../services/showsService.js')
+const { getPopularShows, getTopRatedShows, getShowDetail , getShows} = require('../services/showsService.js')
 
 const getPopularShowsController = async (req, res, next) => {
     try {
@@ -29,8 +29,19 @@ const getShowDetailController = async (req, res, next) => {
     }
 }
 
+const getShowsController = async () => {
+    try {
+        const data = await getShows(req.query)
+        res.status(200).json(data)
+    }
+    catch (error) {
+        next(error)
+    }
+}
+
 module.exports = {
-    getPopularShows: getPopularShowsController,
-    getTopRatedShows: getTopRatedShowsController,
-    getShowsDetial: getShowDetailController
+    getPopularShowsController,
+    getTopRatedShowsController,
+    getShowDetailController,
+    getShowsController
 }

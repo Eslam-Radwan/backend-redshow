@@ -10,4 +10,5 @@ router.get('/top_rated', getTopRatedShows)
 // GET /api/shows/:id
 router.get('/:id', getShowsDetial)
 
+router.get('/discover', getShowsController)
 module.exports = router
