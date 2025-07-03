@@ -46,9 +46,22 @@ const getMovieDetail = async (id) => {
     return response.data;
 }
 
-const getMovies = async (query) => {
-    const respone = await axios.get(`${API_BASE_URL}/discover/movie`,{params:query, headers:{'Authorization': `Bearer ${API_KEY}`}})
-    return respone.data;
+const getMovies = async ({genreId, count}) => {
+
+    const retObj = {}   
+    retObj.count = count;
+    retObj.results = []
+
+    
+    for (let i = 1; i <= Math.ceil(count/20.0); i++)
+    {
+        const response = await axios.get(`${API_BASE_URL}/discover/movie`, { params: {with_genres:genreId, page:i}, headers: { 'Authorization': `Bearer ${API_KEY}` } })  
+        // console.log(response);
+        
+        retObj.results = retObj.results.concat(response.data.results)
+    }   
+    retObj.results = retObj.results.slice(0,count)
+    return retObj;
 }
 
 

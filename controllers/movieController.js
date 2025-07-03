@@ -1,4 +1,4 @@
-const { getPopularMovies, getTopRatedMovies, getMovieDetail, getMoviesGenres} = require('../services/movieService.js')
+const { getPopularMovies, getTopRatedMovies, getMovieDetail,getMovies, getMoviesGenres} = require('../services/movieService.js')
 
 const getPopularMoviesController = async (req, res, next) => {
     try {
